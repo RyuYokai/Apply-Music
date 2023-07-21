@@ -37,13 +37,13 @@ body{
 }
 
 .container{
-    background-color: white;
-    height: 500px;
+    background-color: rgb(197, 197, 197);
+    height: 520px;
     width: 400px;
     border-radius: 20px;
     box-shadow: 0 15px 10px rgba(0, 0, 0, 0.3);
     transition: all 0.5s ease;
-    margin-top: 100px;  /*A modifier par la suite*/
+    margin-top: 100px;  /*A modifier par la suite → c'est la marge pour la distance entre le container et le haut*/
 }
 
 .container:hover{
@@ -61,6 +61,11 @@ body{
 .player-img img{
     object-fit: cover;
     border-radius: 20px;
+    box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+.player-img:hover img{
+    box-shadow: 0 15px 30px 5px rgba(0, 0, 0, 0.8);
 }
 
 .player-img img.active{
@@ -68,4 +73,68 @@ body{
     height: 100%;
     transition: all 0.5s;
     opacity: 1;
+}
+
+h2{
+    font-size: 30px;
+    text-align: center;
+    font-weight: 500;
+    margin: 10px 0 0;
+}
+
+h3{
+    font-size: 20px;
+    text-align: center;
+    font-weight: 500;
+    margin: 10px 0 0;
+}
+
+.player-progress{
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 40px 20px 35px;
+    height: 6px;
+    width: 90%;
+}
+
+.progress{
+    background-color: black;
+    border-radius: 5px;
+    height: 100%;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.music-duration{
+    position: relative;
+    top: -25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.player-controls{
+    position: relative;
+    top: -15px;
+    left: 120px;
+    width: 200px;
+}
+
+.fa-solid{
+    font-size: 30px;
+    color: #666;
+    margin-right: 30px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s ease;
+}
+
+.fa-solid:hover{
+    filter: brightness(50%);
+}
+
+.play-button{
+    font-size: 44px;
+    position: relative;
+    top: 3px;
 }
