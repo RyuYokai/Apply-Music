@@ -16,7 +16,69 @@ const songs = [
     {
         path: 'Assets/Everybody_knows.mp3',
         displayName: 'Everybody knows',
-        cover:'Assets/Cover-1.jpg'
+        cover: 'Assets/Cover-1.jpg', 
+        artist: 'Batman Version',
+    },
+    {
+        path: 'Assets/NF-HAPPY.mp3',
+        displayName: 'NF - HAPPY',
+        cover: 'Assets/cover-happy.jpg', 
+        artist: 'NF',
+    },
+    {
+        path: 'Assets/WOLF_LARSEN_If_I_Be_Wrong.mp3',
+        displayName: 'If I Be Wrong',
+        cover: 'Assets/cover-wrong.jpg', 
+        artist: 'WOLF LARSEN',
     }
+];
 
-]
+let musicIndex = 0;
+let isPlaying = false;
+
+function togglePlay(){
+    if(isPlaying){
+        pauseMusic();
+    }else{
+        playMusic();
+    }
+}
+
+function playMusic(){
+    isPlaying = true;
+    playBtn.classList.replace('fa-play', 'fa-pause');
+    playBtn.setAttribute('title', 'pause');
+    music.play();
+}
+
+function pauseMusic(){
+    isPlaying = false;
+    playBtn.classList.replace('fa-pause', 'fa-play');
+    playBtn.setAttribute('title', 'play');
+    music.pause();
+}
+
+function loadMusic(song){
+    music.src = song.path;
+    title.textContent = song.displayName;
+    artist.textContent = song.artist;
+    image.src = song.cover;
+}
+
+function changeMusic(direction){
+    musicIndex = (musicIndex + direction + songs.length) %
+    songs.length;
+    loadMusic(songs[musicIndex]);
+    playMusic();
+}
+
+function updateProgressBar(){
+    const { duration, currentTime} = music;
+    const progressPercent = (currentTime / duration) * 100;
+    progress.style.width = `${progressPercent}%`;
+
+    const formatTime = (time) => String(Math.floor(time)).padStart(2,'0');
+    durationEL.textContent = `${duration /60}:${formatTime(duration % 60)}`;
+    currentTimeEL.textContent = `${currentTime  / 60}:${formatTime(currentTime % 60)}`;
+}
+
