@@ -8,6 +8,7 @@ playerProgress = document.getElementById('player-progress'),
 prevBtn = document.getElementById('prev'),
 nextBtn = document.getElementById('next'),
 playBtn = document.getElementById('play'),
+loopBtn = document.getElementById('loop');
 background = document.getElementById('bg-img');
 
 const music = new Audio();
@@ -95,5 +96,6 @@ nextBtn.addEventListener('click', ()=>changeMusic(1));
 music.addEventListener('ended', ()=>changeMusic(1));
 music.addEventListener('timeupdate', updateProgressBar);
 playerProgress.addEventListener('click', setProgressBar);
+loopBtn.addEventListener('click',  ()=>changeMusic(0));
 
 loadMusic(songs[musicIndex]);
